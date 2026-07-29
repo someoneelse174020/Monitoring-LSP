@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WS Agroteknologi IoT — Monitoring</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel">
+    <span class="bolt tl"></span><span class="bolt tr"></span>
+    <span class="bolt bl"></span><span class="bolt br"></span>
+
+    <div class="head">
+      <div>
+        <span class="tag"><span class="dot"></span>UG MURO</span>
+        <h1>WS Agroteknologi IoT<span>Monitoring suhu, kelembapan &amp; status relay otomatis</span></h1>
+      </div>
+      <div class="status"><span class="led" id="statusLed"></span><span id="statusText">Menghubungkan…</span></div>
+    </div>
+
+    <!-- LCD HERO -->
+    <div class="lcd">
+      <div class="lcd-title">▍Monitoring</div>
+      <div class="lcd-grid">
+        <div class="lcd-item">
+          <div class="lbl">SUHU</div>
+          <div class="val" id="lcdSuhu">--<small>°C</small></div>
+        </div>
+        <div class="lcd-item">
+          <div class="lbl">K. UDARA</div>
+          <div class="val" id="lcdHum">--<small>%</small></div>
+        </div>
+        <div class="lcd-item">
+          <div class="lbl">K. TANAH</div>
+          <div class="val" id="lcdSoil">--<small>%</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="grid">
+      <div class="card">
+        <span class="clip"></span>
+        <h2><span class="swatch" style="background:#ef4444"></span>Suhu (°C)</h2>
+        <canvas id="tempChart"></canvas>
+      </div>
+      <div class="card">
+        <span class="clip" style="background:#2f6fd8"></span>
+        <h2><span class="swatch" style="background:#2f6fd8"></span>Kelembapan Udara (%)</h2>
+        <canvas id="humChart"></canvas>
+      </div>
+      <div class="card">
+        <span class="clip" style="background:#b8843c"></span>
+        <h2><span class="swatch" style="background:#b8843c"></span>Kelembapan Tanah (%)</h2>
+        <canvas id="soilChart"></canvas>
+      </div>
+
+      <div class="card relay-card">
+        <span class="clip" style="background:var(--red)"></span>
+        <h2><span class="swatch" style="background:var(--red)"></span>Status Relay (Otomatis)</h2>
+        <div class="relay-row">
+          <div class="relay">
+            <div class="meta">
+              <span class="wire"></span>
+              <div><div class="name">Relay 1</div><div class="sub">Aktif kalau suhu &gt;24°C &amp; kelembapan &gt;70%</div></div>
+            </div>
+            <span class="badge" id="badge1">MATI</span>
+          </div>
+          <div class="relay">
+            <div class="meta">
+              <span class="wire"></span>
+              <div><div class="name">Relay 3 (Pompa)</div><div class="sub">Aktif kalau tanah &lt;30%</div></div>
+            </div>
+            <span class="badge" id="badge3">MATI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>WS Agroteknologi IoT — UG MURO</footer>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
